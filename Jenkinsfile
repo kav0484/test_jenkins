@@ -3,7 +3,7 @@ properties ([disableConcurrentBuilds()])
 
 pipeline {
     agent any
-    triggers {pollSCM('* * * * *')}
+    triggers {pollSCM("* * * * *")}
     options {
         buildDiscarder(logRotator(numToKeepStr: '10', artifactNumToKeepStr:'10'))
         timestamps()

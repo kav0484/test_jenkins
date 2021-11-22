@@ -1,17 +1,19 @@
+#!groovy
+properties ([disableConcurrentBuilds()])
+
 pipeline {
-    agent any
-    stages{
-        stage('build'){
-            steps{
-                sh 'mvn clean install'
-            }
-        }
+    agent {
+        label 'мастер'
     }
-    post {
-        always {
-            mail to: "[kav0484@mail.ru]",
-                subject: "Build finished: ${currentBuild.fullDisplayName}",
-                body: "Check out status at ${env.BUILD_URL}"
+    options {
+        buildDiscarder(logRotator(numToKeepStr: '10', artifactNumToKeepStr:'10'))
+        timestamps()
+    }
+    stages {
+        stage("Preparations") {
+            steps {
+                sh 'ssh d11test \'hostname\''
+            }
         }
     }
 }

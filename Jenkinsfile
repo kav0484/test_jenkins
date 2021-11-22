@@ -8,9 +8,12 @@ pipeline {
         timestamps()
     }
     stages {
-        stage("Preparations") {
+        stage("create docker image") {
             steps {
-                sh 'ssh d11test \'hostname\''
+                echo "================start build image============"
+                dir ('docker/toolbox') {
+                    sh 'docker build .'
+                }
             }
         }
     }

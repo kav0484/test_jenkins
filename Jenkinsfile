@@ -2,9 +2,7 @@
 properties ([disableConcurrentBuilds()])
 
 pipeline {
-    agent {
-        label 'мастер'
-    }
+    agent any
     options {
         buildDiscarder(logRotator(numToKeepStr: '10', artifactNumToKeepStr:'10'))
         timestamps()

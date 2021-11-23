@@ -27,7 +27,7 @@ pipeline {
         stage('docker push') {
             steps {
                 echo "=====================start pushing image===================="
-                sh 'docekr push kav0484/toolbox:latest'
+                sh 'docker push kav0484/toolbox:latest'
             }
         }
     }
